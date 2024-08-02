@@ -26,6 +26,7 @@
     ],
     "paths": {
       "components": ["./src/components"],
+      "components/organisms": ["./src/components/organisms"],
       "redux": ["./src/redux"],
       "services": ["./src/services"]
     }
