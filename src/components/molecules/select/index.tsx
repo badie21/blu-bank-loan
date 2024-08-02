@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useRef, useState, useEffect, FC } from 'react';
 
 import { Input } from 'components';
