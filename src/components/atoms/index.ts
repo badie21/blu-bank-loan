@@ -1,3 +1,4 @@
-import TextInput from './text-input';
+import Input from './input';
+import Label from './label';
 
-export { TextInput };
+export { Input, Label };
