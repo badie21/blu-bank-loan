@@ -1,0 +1,7 @@
+.husky
+.vscode
+.idea
+.next
+node_modules
+lint-staged.config.js
+*.d.ts
