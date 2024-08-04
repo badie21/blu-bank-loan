@@ -1,4 +1,5 @@
+import Button from './button';
 import Input from './input';
 import Label from './label';
 
-export { Input, Label };
+export { Input, Label, Button };
