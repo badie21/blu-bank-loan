@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import { BankInfoForm } from 'components';
+import BankInfoForm from './_components/bank-info-form';
 
 export const metadata: Metadata = {
   title: 'اطلاعات حساب بانکی',

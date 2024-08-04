@@ -1,7 +1,7 @@
 'use client';
 
 import { LoanCard } from 'components';
-import { useAppSelector } from 'redux/store';
+import { useAppSelector } from 'libs/redux';
 
 const LoanList = () => {
   const { activeLoans } = useAppSelector((state) => state.loans);

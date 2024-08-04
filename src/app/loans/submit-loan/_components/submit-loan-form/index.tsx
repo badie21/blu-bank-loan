@@ -4,11 +4,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
 import * as yup from 'yup';
 
 import { Button, LoanCard, SelectInput } from 'components';
-import { addLoan, useAppDispatch, useAppSelector } from 'redux/store';
+import { addLoan, useAppDispatch, useAppSelector } from 'libs/redux';
 import { ISubmittedLoan, LoanPages, PublicPages, TLoan } from 'types';
 
 const schema = yup.object({

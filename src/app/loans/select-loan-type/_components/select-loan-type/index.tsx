@@ -7,8 +7,8 @@ import { useDispatch } from 'react-redux';
 import * as yup from 'yup';
 
 import { Button, SelectInput } from 'components';
-import { setSelectedLoan } from 'redux/store';
-import { useGetLoansQuery } from 'services';
+import { setSelectedLoan } from 'libs/redux';
+import { useGetLoansQuery } from 'libs/services';
 import { LoanPages, TLoan } from 'types';
 
 const schema = yup.object({

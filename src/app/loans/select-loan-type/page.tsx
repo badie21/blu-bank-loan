@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import { SelectLoanTypeForm } from 'components';
+import SelectLoanTypeForm from './_components/select-loan-type';
 
 export const metadata: Metadata = {
   title: 'انتخاب نوع تسهیلات',

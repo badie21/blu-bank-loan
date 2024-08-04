@@ -1,4 +1,4 @@
-import { LoanList } from 'components';
+import LoanList from './_components/loan-list';
 
 export default function Home() {
   return <LoanList />;

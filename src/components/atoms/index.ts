@@ -1,5 +1,3 @@
-import Button from './button';
-import Input from './input';
-import Label from './label';
-
-export { Input, Label, Button };
+export { default as Button } from './button';
+export { default as Input } from './input';
+export { default as Label } from './label';

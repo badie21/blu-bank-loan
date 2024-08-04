@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import * as yup from 'yup';
 
 import { Button, NumberInput, TextInput } from 'components';
-import { setBankInfo, useAppSelector } from 'redux/store';
+import { setBankInfo, useAppSelector } from 'libs/redux';
 import { IBankInfoFormValues, LoanPages } from 'types';
 import { shebaRegex } from 'utils';
 

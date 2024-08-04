@@ -29,8 +29,8 @@
       "components/atoms": ["./src/components/atoms"],
       "components/molecules": ["./src/components/molecules"],
       "components/organisms": ["./src/components/organisms"],
-      "redux/store": ["./src/redux"],
-      "services": ["./src/services"],
+      "libs/redux": ["./libs/redux"],
+      "libs/services": ["./libs/services"],
       "utils": ["./src/utils"],
       "types": [
         "./src/types"

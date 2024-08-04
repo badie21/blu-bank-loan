@@ -4,7 +4,7 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 import loansSlice from './slices/loans';
-import { loanApi } from 'services';
+import { loanApi } from '../services';
 
 const persistConfig = {
   key: 'loans',

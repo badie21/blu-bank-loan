@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import { IdentityInfoForm } from 'components';
+import IdentityInfoForm from './_components/identity-info-form';
 
 export const metadata: Metadata = {
   title: 'اطلاعات هویتی',

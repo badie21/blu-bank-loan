@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import { SubmitLoanForm } from 'components';
+import SubmitLoanForm from './_components/submit-loan-form';
 
 export const metadata: Metadata = {
   title: 'ثبت درخواست',

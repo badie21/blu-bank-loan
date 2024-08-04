@@ -2,8 +2,8 @@ import './globals.css';
 import type { Metadata } from 'next';
 
 import IranSans from '../../public/fonts/fonts';
-import ReduxProvider from '../redux/provider';
 import { Layout } from 'components';
+import { ReduxProvider } from 'libs/redux';
 
 export const metadata: Metadata = {
   title: 'لیست تسهیلات',

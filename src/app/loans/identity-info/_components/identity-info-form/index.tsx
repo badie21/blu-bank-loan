@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import * as yup from 'yup';
 
 import { Button, DatePicker, Label, NumberInput, TextInput } from 'components';
-import { setIdentityInfo, useAppSelector } from 'redux/store';
+import { setIdentityInfo, useAppSelector } from 'libs/redux';
 import { LoanPages, TIdentityFormValues } from 'types';
 import { nationalCodeRegex, phoneNumberRegex } from 'utils';
 

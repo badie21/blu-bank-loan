@@ -1,4 +1,2 @@
-import LoanCard from './loan-card';
-import NavBar from './nav-bar';
-
-export { NavBar, LoanCard };
+export { default as LoanCard } from './loan-card';
+export { default as NavBar } from './nav-bar';

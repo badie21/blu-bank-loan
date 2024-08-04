@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 
-import { NavBar } from 'components/organisms';
+import { NavBar } from 'components';
 
 type Props = {
   children: ReactNode;
