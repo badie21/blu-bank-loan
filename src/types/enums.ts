@@ -4,3 +4,7 @@ export enum LoanPages {
   BankInfo = '/loans/bank-info',
   SubmitLoan = '/loans/submit-loan'
 }
+
+export enum PublicPages {
+  Dashboard = '/'
+}

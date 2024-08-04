@@ -45,6 +45,8 @@ const BankInfoForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      <h2 className="font-bold text-xl mb-5">مشخصات بانکی</h2>
+
       <Controller
         name="accountNumber"
         control={control}
@@ -72,7 +74,9 @@ const BankInfoForm = () => {
         )}
       />
 
-      <Button type="submit">Submit</Button>
+      <Button classnames="mt-7" type="submit">
+        Submit
+      </Button>
     </form>
   );
 };

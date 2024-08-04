@@ -44,7 +44,8 @@ const SelectLoanTypeForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form className="h-full" onSubmit={handleSubmit(onSubmit)}>
+      <h2 className="font-bold text-xl mb-5">انتخاب نوع تسهیلات</h2>
       <Controller
         name="loan"
         control={control}
@@ -58,7 +59,9 @@ const SelectLoanTypeForm = () => {
           />
         )}
       />
-      <Button type="submit">Submit</Button>
+      <Button classnames="mt-7" type="submit">
+        Submit
+      </Button>
     </form>
   );
 };

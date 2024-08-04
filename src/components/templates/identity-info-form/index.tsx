@@ -52,6 +52,8 @@ const IdentityInfoForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      <h2 className="font-bold text-xl mb-5">مشخصات هویتی</h2>
+
       <Controller
         name="name"
         control={control}
@@ -93,7 +95,9 @@ const IdentityInfoForm = () => {
           </Label>
         )}
       />
-      <Button type="submit">Submit</Button>
+      <Button classnames="mt-7" type="submit">
+        Submit
+      </Button>
     </form>
   );
 };

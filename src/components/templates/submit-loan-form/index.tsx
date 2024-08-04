@@ -8,8 +8,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as yup from 'yup';
 
 import { Button, LoanCard, SelectInput } from 'components';
-import { useAppDispatch, useAppSelector } from 'redux/store';
-import { ISubmittedLoan, LoanPages, TLoan } from 'types';
+import { addLoan, useAppDispatch, useAppSelector } from 'redux/store';
+import { ISubmittedLoan, LoanPages, PublicPages, TLoan } from 'types';
 
 const schema = yup.object({
   repaymentType: yup.string().required('نوع بازپرداخت را انتخاب کنید')
@@ -63,28 +63,38 @@ const SubmitLoanForm = () => {
   };
 
   const createNewLoan = (newLoan: ISubmittedLoan) => {
-    setLoanInfo(newLoan);
+    dispatch(addLoan(newLoan));
+
+    push(PublicPages.Dashboard);
   };
 
-  return loanInfo ? (
-    <LoanCard loanInfo={loanInfo} onSubmit={createNewLoan} />
-  ) : (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Controller
-        name="repaymentType"
-        control={control}
-        render={({ field }) => (
-          <SelectInput
-            label={'مدت زمان بازپرداخت'}
-            options={selectedLoan?.repaymentType.map((opt) => ({ value: opt.value.toString(), label: opt.name }))}
-            value={field.value}
-            error={errors?.repaymentType?.message}
-            onChange={field.onChange}
+  return (
+    <>
+      <h2 className="font-bold text-xl mb-5">درخواست تسهیلات</h2>
+
+      {loanInfo ? (
+        <LoanCard loanInfo={loanInfo} onSubmit={createNewLoan} />
+      ) : (
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Controller
+            name="repaymentType"
+            control={control}
+            render={({ field }) => (
+              <SelectInput
+                label={'مدت زمان بازپرداخت'}
+                options={selectedLoan?.repaymentType.map((opt) => ({ value: opt.value.toString(), label: opt.name }))}
+                value={field.value}
+                error={errors?.repaymentType?.message}
+                onChange={field.onChange}
+              />
+            )}
           />
-        )}
-      />
-      <Button type="submit">Submit</Button>
-    </form>
+          <Button classnames="mt-7" type="submit">
+            Submit
+          </Button>
+        </form>
+      )}
+    </>
   );
 };
 
