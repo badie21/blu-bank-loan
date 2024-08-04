@@ -7,7 +7,5 @@ import Link from 'next/link';
 import { useGetLoansQuery } from 'services';
 
 export default function Home() {
-  const { data } = useGetLoansQuery();
-
   return <div className=""></div>;
 }
