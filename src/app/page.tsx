@@ -1,11 +1,5 @@
-'use client';
-// import { Input } from 'components';
-
-import Image from 'next/image';
-import Link from 'next/link';
-
-import { useGetLoansQuery } from 'services';
+import { LoanList } from 'components';
 
 export default function Home() {
-  return <div className=""></div>;
+  return <LoanList />;
 }
