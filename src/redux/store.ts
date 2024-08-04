@@ -1,15 +1,22 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
+import loansSlice from './slices/loans';
+// import { combineReducers } from 'redux';
 import { loanApi } from 'services';
 
+const reducers = combineReducers({
+  loans: loansSlice,
+  [loanApi.reducerPath]: loanApi.reducer
+});
+
 export const store = configureStore({
-  reducer: {
-    [loanApi.reducerPath]: loanApi.reducer
-  },
+  reducer: reducers,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(loanApi.middleware)
 });
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch;
+
+export const useAppDispatch = () => useDispatch<AppDispatch>();
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
