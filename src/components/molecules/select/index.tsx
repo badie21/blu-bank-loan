@@ -1,24 +1,24 @@
 'use client';
 
-import React, { useRef, useState, useEffect, FC } from 'react';
+import classNames from 'classnames';
+import React, { useRef, useState, useEffect, FC, useMemo } from 'react';
 
-import { Input } from 'components';
+import { Input, Label } from 'components';
 
 type Props = {
   onChange: (value: string) => void;
   value: string;
+  label?: string;
+  options?: { value: string; label: string }[];
+  error?: string;
 };
 
-const SelectInput: FC<Props> = ({ onChange, value }) => {
-  const options = [
-    { value: 'option1', label: 'Option 1' },
-    { value: 'option2', label: 'Option 2' },
-    { value: 'option3', label: 'Option 3' }
-  ];
-
+const SelectInput: FC<Props> = ({ onChange, value, label, options, error }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const hasError = Boolean(error);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -43,19 +43,30 @@ const SelectInput: FC<Props> = ({ onChange, value }) => {
     };
   }, [dropdownRef]);
 
+  const inputValue = useMemo(() => {
+    const selectedOption = options?.find((option) => option.value === value);
+
+    if (!selectedOption) return '';
+
+    return selectedOption.label;
+  }, [value, options]);
+
   return (
-    <div className="relative" ref={dropdownRef}>
-      <Input value={value} onClick={toggleDropdown} />
-      {isOpen && (
-        <ul className="border-[1px] w-full bg-white text-black border-black absolute">
-          {options.map((option) => (
-            <li key={option.value} className={'p-2 hover:bg-gray-400 cursor-pointer '} onClick={() => handleOptionClick(option.value)}>
-              {option.label}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+    <Label label={label}>
+      <div className="relative" ref={dropdownRef}>
+        <Input value={inputValue} className={classNames(hasError && 'border-red-700', 'w-full')} onClick={toggleDropdown} />
+        {hasError && <p className={'text-red-700'}>{error}</p>}
+        {isOpen && (
+          <ul className="border-[1px] w-full bg-white text-black border-black absolute">
+            {options?.map((option) => (
+              <li key={option.value} className={'p-2 hover:bg-gray-400 cursor-pointer '} onClick={() => handleOptionClick(option.value)}>
+                {option.label}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </Label>
   );
 };
 

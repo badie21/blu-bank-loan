@@ -15,6 +15,7 @@ interface Props {
   disablePreviousDays?: boolean;
   renderDayFn?: (day: { timestamp: number; currentMonth: boolean }, index: number) => ReactNode;
   label?: string;
+  error?: string;
 }
 
 const DatePicker: FC<Props> = ({
@@ -26,7 +27,8 @@ const DatePicker: FC<Props> = ({
   doubleMonth = false,
   disablePreviousDays = false,
   renderDayFn,
-  label
+  label,
+  error
 }) => {
   const [date, setDate] = useState<{ from: null | number; to: null | number }>({
     from: value?.from ? new Date(value.from).setHours(0, 0, 0, 0) : null,
@@ -40,6 +42,8 @@ const DatePicker: FC<Props> = ({
   const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null);
 
   const [confirmed, setConfirmed] = useState({ state: false });
+
+  const hasError = Boolean(error);
 
   const { styles, attributes } = usePopper(referenceElement, popperElement, {
     placement: 'bottom-end',
@@ -117,9 +121,10 @@ const DatePicker: FC<Props> = ({
   return (
     <div
       className={classNames(
-        'w-full h-[52px] border-black bg-white text-black border-[1px] rounded-lg p-4 relative',
+        'w-full h-[52px] border-black bg-white text-black border-[1px] rounded-b p-4 relative',
         visible && 'border-primary-1',
-        inputClassName
+        inputClassName,
+        hasError && 'border-red-700'
       )}
       onClick={() => setVisible(true)}
       ref={setReferenceElement}
@@ -127,7 +132,7 @@ const DatePicker: FC<Props> = ({
       {label ? (
         <span
           className={classNames(
-            'absolute text-xs px-1 transition-all duration-200 top-[1rem]',
+            'text-xs px-1 transition-all duration-200 ',
             (visible || value?.from) && '!-top-[.8rem] bg-white text-primary-1',
             !visible && '!text-black'
           )}
@@ -141,6 +146,7 @@ const DatePicker: FC<Props> = ({
         <i className="fi fi-rr-calendar"></i>
       </div>
       <span className="text-sm">{startDate}</span>
+
       {type === 'range' && date.to && (
         <>
           <span className="mx-4">-</span>
@@ -171,6 +177,7 @@ const DatePicker: FC<Props> = ({
           <button
             className="mt-auto bg-blue-600  text-white h-12 w-full"
             // block
+            type={'button'}
             onClick={submitDateHandler}
             disabled={(type === 'range' && (!date.from || !date.to)) || (type === 'single' && !date.from)}
           >

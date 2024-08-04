@@ -7,7 +7,7 @@ interface LabelProps extends HTMLProps<HTMLLabelElement> {
 const Label: FC<LabelProps> = ({ children, label, htmlFor, ...resProps }) => {
   return (
     <>
-      <label {...resProps} className={'text-black flex flex-col pb-4'} htmlFor={htmlFor}>
+      <label {...resProps} className={'text-black flex flex-col pb-4 font-sans'} htmlFor={htmlFor}>
         {label}
       </label>
       {children}
